@@ -4,7 +4,7 @@ cus = """
 <style>
 
 #root > div:nth-child(1) > div.withScreencast > div > div > header{
-    visibility:hidden;
+    visibility:visible;
 }
 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section{
@@ -28,19 +28,24 @@ cus = """
 """
 st.markdown(cus,unsafe_allow_html=True)
 st.title("CELLO Result Sorter")
-fasta = st.file_uploader("Upload fasta", type=["txt"])
-if fasta is not None:
-    st.write("fasta uploaded!!")
-    flines = fasta.readlines()
-    flines_temp = []
-    for line in flines:
-        line = line.strip().decode('ascii')
-        flines_temp.append(line)
-    flines = flines_temp
 
+col1,col2=st.columns(2)
+with col1:
+
+    fasta = st.file_uploader("Upload fasta", type=["txt"])
+    if fasta is not None:
+        st.success("FASTA file uploaded")
+        flines = fasta.readlines()
+        flines_temp = []
+        for line in flines:
+            line = line.strip().decode('ascii')
+            flines_temp.append(line)
+        flines = flines_temp
+
+with col2:
     cello = st.file_uploader("Upload cello", type=["txt"])
     if cello is not None:
-        st.write("cello uploaded!!")
+        st.success("CEELO Result file uploaded ")
         clines = cello.readlines()
         clines_temp = []
         for line in clines:
@@ -48,69 +53,78 @@ if fasta is not None:
             clines_temp.append(line)
         clines = clines_temp
 
-        bact_type = st.radio(
-        "Bacteria Type",
-        ["Gram Positive", "Gram Negative"]
-        )
+if fasta is not None and cello is not None:
 
-        if st.button("Crawl for Sub Cellular Locations"):
+    i = 0
+    for line in flines:
+        if ">" in line:
+            i+=1
+    totalProteins = i
 
-            i = 0
-            for line in flines:
-                if ">" in line:
-                    i+=1
-            totalProteins = i
+    st.success(f"{totalProteins} protein sequences have been imported successfully")
 
-            cats_seqs = []
-            cats_info_labels = []
+    st.divider()
 
-            ("\n")
-            ("Search Results...")
-            ("\n")
+    bact_type = st.radio(
+    "Organism",
+    ["Gram Positive", "Gram Negative"]
+    )
 
-            cats_pos = ["Extracellular","Cytoplasmic","Membrane","CellWall"]
-            cats_neg = ["Cytoplasmic","Periplasmic","OuterMembrane","Extracellular","InnerMembrane"]
+    cats_pos = ["Extracellular","Cytoplasmic","Membrane","CellWall"]
+    cats_neg = ["Cytoplasmic","Periplasmic","OuterMembrane","Extracellular","InnerMembrane"]
 
-            if bact_type == "Gram Positive":
-                cats = cats_pos
-                gap = 18
+    if bact_type == "Gram Positive":
+        cats = cats_pos
+        gap = 18
 
-            else:
-                cats = cats_neg
-                gap = 19
+    else:
+        cats = cats_neg
+        gap = 19
 
-            for i in range(len(cats)):
-                cat = cats[i]
-                fileo = ""
+    included_cats = st.multiselect('Drop all the Protein Cataories You don\'t want to include in output',cats,cats)
+    
+    cats_info_labels = []
 
-                j=(len(clines)-12)//gap
-                count=0
-                for i in range(0,j+1):
-                    if cat in clines[(12+(gap*i))-1]:
-                        count+=1
-                        seqid=">"+clines[(gap*i)][7:]
-                        idx=flines.index(seqid)
-                        idx+=1
-                        seq=""
-                        while ">" not in flines[idx]:
-                            seq+=flines[idx].strip()
-                            if idx<len(flines)-1:
-                                idx+=1
-                            else:
-                                break
-                        fileo+=seqid
-                        for i in range(0,len(seq),60):
-                            seqline = seq[i:i+60]+"\n"
-                            fileo+=seqline
-                        fileo+="\n"
-                
-                cats_seqs.append(fileo)
-                cat_info_label = str(cat)+" --> "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
+    if st.button("Generate output file"):
 
-                cats_info_labels.append(cat_info_label)
+        ("Crwaling file selected protein catagories...")
 
-            i=0
-            for cat_seq in cats_seqs:
-                with st.expander(str(cats_info_labels[i]), expanded=False):
-                    i+=1
-                    st.code(cat_seq)
+        output_fasta=""
+
+        for i in range(len(included_cats)):
+            fileo=""
+            cat = included_cats[i]
+
+            j=(len(clines)-12)//gap
+            count=0
+            for i in range(0,j+1):
+                if cat in clines[(12+(gap*i))-1]:
+                    count+=1
+                    seqid=">"+clines[(gap*i)][7:]
+                    idx=flines.index(seqid)
+                    idx+=1
+                    seq=""
+                    while ">" not in flines[idx]:
+                        seq+=flines[idx].strip()
+                        if idx<len(flines)-1:
+                            idx+=1
+                        else:
+                            break
+                    fileo+=seqid
+                    for i in range(0,len(seq),60):
+                        seqline = seq[i:i+60]+"\n"
+                        fileo+=seqline
+                    fileo+="\n"
+            
+            output_fasta+=fileo
+            cat_info_label = str(cat)+" --> "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
+            cats_info_labels.append(cat_info_label)
+
+        for cat_info_label in cats_info_labels:
+            st.success(cat_info_label)
+        
+        label = "proteins"
+        for cat in included_cats:
+            label+="_"+cat
+
+        st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
