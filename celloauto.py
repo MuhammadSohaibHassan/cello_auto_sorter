@@ -4,11 +4,11 @@ cus = """
 <style>
 
 #root > div:nth-child(1) > div.withScreencast > div > div > header{
-    visibility:visible;
+    visibility:hidden;
 }
 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section{
-    background:black;
+    background:purple;
     }
 
 #cello-result-sorter > div > span{
@@ -87,7 +87,7 @@ if fasta is not None and cello is not None:
 
     if st.button("Generate output file"):
 
-        ("Crwaling file selected protein catagories...")
+        ("Crwaling file for selected protein catagories...")
 
         output_fasta=""
 
