@@ -7,9 +7,7 @@ cus = """
     visibility:hidden;
 }
 
-#root > div:nth-child(1) > div > div > button{
-    visibility:hidden;
-}
+
 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section{
     background:purple;
