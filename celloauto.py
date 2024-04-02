@@ -8,7 +8,7 @@ cus = """
     }
 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section{
-    background:seagreen;
+    background:darkseaagreen;
     }
 
 #cello-result-sorter > div > span{
