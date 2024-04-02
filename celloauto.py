@@ -5,12 +5,10 @@ cus = """
 
 #root > div:nth-child(1) > div.withScreencast > div > div > header{
     visibility:hidden;
-}
-
-
+    }
 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section{
-    background:purple;
+    background:seagreen;
     }
 
 #cello-result-sorter > div > span{
