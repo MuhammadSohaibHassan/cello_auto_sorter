@@ -51,7 +51,7 @@ st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
 
 st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
-fasta = st.sidebar.file_uploader("Upload fasta", type=["txt"])
+fasta = st.sidebar.file_uploader("Upload fasta (.txt format) ", type=["txt"])
 if fasta is not None:
     st.sidebar.success("FASTA file uploaded")
     flines = fasta.readlines()
@@ -149,7 +149,7 @@ if fasta is not None and cello is not None:
                     fileo+="\n"
             
             output_fasta+=fileo
-            cat_info_label = str(cat)+" : "+str(count)+" ("+str(round(count/totalProteins*100,3))+" %)"
+            cat_info_label = str(cat)+" : "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
 
         st.success("FASTA file generated Successfully")
