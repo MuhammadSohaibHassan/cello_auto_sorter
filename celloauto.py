@@ -152,26 +152,25 @@ if fasta is not None:
                 cat_info_label = str(cat)+" : "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
                 cats_info_labels.append(cat_info_label)
 
-            with col2:
-                st.success("FASTA file generated Successfully")
-        
-                ("---")
+            st.success("FASTA file generated Successfully")
+    
+            ("---")
+            
+            ("""
+            ### Catagories Breakdown
+            """)
+            
+            for cat_info_label in cats_info_labels:
+                st.col1.text(cat_info_label)
+    
+            label = "proteins"
+            for cat in included_cats:
+                label+="_"+cat
                 
-                ("""
-                ### Catagories Breakdown
-                """)
-                
-                for cat_info_label in cats_info_labels:
-                    st.text(cat_info_label)
-        
-                label = "proteins"
-                for cat in included_cats:
-                    label+="_"+cat
-                    
-                ("---")
-        
-                ("""
-                ### Download output FASTA
-                """)
+            ("---")
+    
+            ("""
+            ### Download output FASTA
+            """)
                      
             st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
