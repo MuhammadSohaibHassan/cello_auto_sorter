@@ -11,19 +11,6 @@ cus = """
     background:darkseaagreen;
     }
 
-#cello-result-sorter > div > span{
-    padding:20px;
-    background:black;
-    color:darkslategray;
-    border-radius:20px;
-    }
-
-#root > div:nth-child(1) > div.withScreencast > div > div > div > section > div.block-container.st-emotion-cache-1y4p8pa.ea3mdgi5 > div > div > div > div:nth-child(7) > div{
-    border:3px solid black;
-    padding: 10px;
-    border-radius:20px;
-    }
-
 </style>
 """
 st.markdown(cus,unsafe_allow_html=True)
