@@ -36,7 +36,7 @@ cus = """
 </style>
 
 <span class="title">subCELlular LOcalization predictor</span>
-<span class="subtitle">subCELlular LOcalization predictor</span>
+<span class="subtitle">Results Sorter</span>
 
 """
 st.markdown(cus,unsafe_allow_html=True)
