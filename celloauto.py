@@ -99,7 +99,7 @@ if fasta is not None and cello is not None:
 
     if st.sidebar.button("Generate output file"):
 
-        ("Crwaling file for selected protein catagories...")
+        st.sidebar.info("Crwaling file for selected protein catagories...")
 
         output_fasta=""
 
