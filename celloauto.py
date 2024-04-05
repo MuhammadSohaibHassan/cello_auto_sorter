@@ -116,7 +116,7 @@ if fasta is not None and cello is not None:
             cat_info_label = str(cat)+" : "+str(count)+" ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
 
-         ("""
+        ("""
         ### Catagories Breakdown
         """)
         
