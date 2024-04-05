@@ -19,8 +19,12 @@ cus = """
     visibility:hidden;
 }
 
+.title{
+    color:#0e2e16
+}
+
 </style>
-<span>subCELlular LOcalization predictor</span>
+<span class="title">subCELlular LOcalization predictor</span>
 """
 st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
