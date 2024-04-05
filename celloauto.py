@@ -101,11 +101,11 @@ if fasta is not None:
                 break
                 
         if isBactGramPositive:
-            st.success("Bacterial Specie detected to be  Gram Positive")
+            st.success("Bacterial Specie detected to be Gram Positive")
             cats = cats_pos
             gap = 18
         else:
-            st.success("Bacterial Specie detected to be  Gram Positive")
+            st.success("Bacterial Specie detected to be Gram Negative")
             cats = cats_neg
             gap = 19
             
