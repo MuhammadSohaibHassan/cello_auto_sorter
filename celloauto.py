@@ -1,6 +1,7 @@
 import streamlit as st
 
 cus = """
+
 <style>
 
 #root > div:nth-child(1) > div.withScreencast > div > div > header{
@@ -23,6 +24,13 @@ cus = """
 }
 
 .subtitle{
+    color:#71e388;
+    display:flex;
+    justify-content:center;
+    font-size: 1.5em;
+}
+
+.footer{
     position: fixed;
     bottom: 0em;
     right: 12em;
@@ -33,10 +41,13 @@ cus = """
 </style>
 
 <span class="title">subCELlular LOcalization predictor</span>
-<span class="subtitle">By Muhammad Sohaib Hassan</span>
+<span class="subtitle">Results Sorter</span>
+<span class="footer">By Muhammad Sohaib Hassan</span>
 
 """
+
 st.markdown(cus,unsafe_allow_html=True)
+
 st.sidebar.title("CELLO Result Sorter")
 
 st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
