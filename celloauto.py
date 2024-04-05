@@ -30,14 +30,14 @@ cus = """
 </style>
 """
 st.markdown(cus,unsafe_allow_html=True)
-st.title("CELLO Result Sorter")
+st.sidebar.title("CELLO Result Sorter")
 
 col1,col2=st.columns(2)
 with col1:
 
-    fasta = st.file_uploader("Upload fasta", type=["txt"])
+    fasta = st.sidebar.file_uploader("Upload fasta", type=["txt"])
     if fasta is not None:
-        st.success("FASTA file uploaded")
+        st.sidebar.success("FASTA file uploaded")
         flines = fasta.readlines()
         flines_temp = []
         for line in flines:
@@ -46,9 +46,9 @@ with col1:
         flines = flines_temp
 
 with col2:
-    cello = st.file_uploader("Upload cello", type=["txt"])
+    cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
     if cello is not None:
-        st.success("CEELO Result file uploaded ")
+        st.sidebar.success("CEELO Result file uploaded ")
         clines = cello.readlines()
         clines_temp = []
         for line in clines:
@@ -64,11 +64,11 @@ if fasta is not None and cello is not None:
             i+=1
     totalProteins = i
 
-    st.success(f"{totalProteins} protein sequences have been imported successfully")
+    st.sidebar.success(f"{totalProteins} protein sequences have been imported successfully")
 
-    st.divider()
+    st.sidebar.divider()
 
-    bact_type = st.radio(
+    bact_type = stst.sidebar.radio(
     "Organism",
     ["Gram Positive", "Gram Negative"]
     )
@@ -84,13 +84,13 @@ if fasta is not None and cello is not None:
         cats = cats_neg
         gap = 19
 
-    included_cats = st.multiselect('Drop all the Protein Cataories You don\'t want to include in output',cats,cats)
+    included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output',cats,cats)
     
     cats_info_labels = []
     labels=[]
     sizes=[]
 
-    if st.button("Generate output file"):
+    if st.sidebar.button("Generate output file"):
 
         ("Crwaling file for selected protein catagories...")
 
