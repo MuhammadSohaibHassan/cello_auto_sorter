@@ -46,6 +46,8 @@ cus = """
 
 """
 
+col1,col2 = st.columns(2)
+
 st.markdown(cus,unsafe_allow_html=True)
 
 st.sidebar.title("CELLO Result Sorter")
@@ -149,26 +151,27 @@ if fasta is not None:
                 output_fasta+=fileo
                 cat_info_label = str(cat)+" : "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
                 cats_info_labels.append(cat_info_label)
-    
-            st.success("FASTA file generated Successfully")
-    
-            ("---")
-            
-            ("""
-            ### Catagories Breakdown
-            """)
-            
-            for cat_info_label in cats_info_labels:
-                st.text(cat_info_label)
-    
-            label = "proteins"
-            for cat in included_cats:
-                label+="_"+cat
+
+            with col2:
+                st.success("FASTA file generated Successfully")
+        
+                ("---")
                 
-            ("---")
-    
-            ("""
-            ### Download output FASTA
-            """)
+                ("""
+                ### Catagories Breakdown
+                """)
+                
+                for cat_info_label in cats_info_labels:
+                    st.text(cat_info_label)
+        
+                label = "proteins"
+                for cat in included_cats:
+                    label+="_"+cat
+                    
+                ("---")
+        
+                ("""
+                ### Download output FASTA
+                """)
                      
             st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
