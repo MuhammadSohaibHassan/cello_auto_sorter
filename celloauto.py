@@ -123,7 +123,7 @@ if fasta is not None and cello is not None:
             labels.append(cat)
             sizes.append(count)
 
-        col1,col2 = st.columns([1,2])
+        col1,col2 = st.columns(2)
         
         with col1:
 
