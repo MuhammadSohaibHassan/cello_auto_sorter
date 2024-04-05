@@ -32,29 +32,25 @@ cus = """
 st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
 
-col1,col2=st.columns(2)
-with col1:
+fasta = st.sidebar.file_uploader("Upload fasta", type=["txt"])
+if fasta is not None:
+    st.sidebar.success("FASTA file uploaded")
+    flines = fasta.readlines()
+    flines_temp = []
+    for line in flines:
+        line = line.strip().decode('ascii')
+        flines_temp.append(line)
+    flines = flines_temp
 
-    fasta = st.sidebar.file_uploader("Upload fasta", type=["txt"])
-    if fasta is not None:
-        st.sidebar.success("FASTA file uploaded")
-        flines = fasta.readlines()
-        flines_temp = []
-        for line in flines:
-            line = line.strip().decode('ascii')
-            flines_temp.append(line)
-        flines = flines_temp
-
-with col2:
-    cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
-    if cello is not None:
-        st.sidebar.success("CEELO Result file uploaded ")
-        clines = cello.readlines()
-        clines_temp = []
-        for line in clines:
-            line = line.strip().decode('ascii')
-            clines_temp.append(line)
-        clines = clines_temp
+cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
+if cello is not None:
+    st.sidebar.success("CEELO Result file uploaded ")
+    clines = cello.readlines()
+    clines_temp = []
+    for line in clines:
+        line = line.strip().decode('ascii')
+        clines_temp.append(line)
+    clines = clines_temp
 
 if fasta is not None and cello is not None:
 
