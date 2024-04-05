@@ -7,7 +7,7 @@ cus = """
     visibility:hidden;
     }
     
-#root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1ec6rqw.eczjsme11 > div.st-emotion-cache-6qob1r.eczjsme3{
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.st-emotion-cache-uf99v8.ea3mdgi8{
     background:darkseagreen;
 }
 
