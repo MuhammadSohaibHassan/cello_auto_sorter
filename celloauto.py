@@ -110,6 +110,8 @@ if fasta is not None and cello is not None:
     cats_info_labels = []
 
     if st.sidebar.button("Generate FASTA file for seelcted catagories"):
+
+        st.text("Crawling to sort proteins into catagories w.r.t their predicted Sub Cellular Location ...")
         
         output_fasta=""
 
