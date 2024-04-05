@@ -29,7 +29,7 @@ cus = """
 st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
 
-st.sidebar.warning("Save your .FASTA file as .txt file to upload")
+st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
 fasta = st.sidebar.file_uploader("Upload fasta", type=["txt"])
 if fasta is not None:
     st.sidebar.success("FASTA file uploaded")
