@@ -20,13 +20,15 @@ cus = """
 }
 
 .title{
-    color:#71e388
-    display:flex
-    size:20px
+    color:#71e388;
+    display:flex;
+    font-size: 2.5em;
 }
 
 </style>
+
 <span class="title">subCELlular LOcalization predictor</span>
+
 """
 st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
