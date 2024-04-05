@@ -108,8 +108,6 @@ if fasta is not None:
             st.success("Bacterial Specie detected to be Gram Negative")
             cats = cats_neg
             gap = 19
-            
-        st.sidebar.divider()
     
         included_cats = st.multiselect('Drop all the Protein Catagories You don\'t want to include in output FASTA file',cats,cats)
         
@@ -165,8 +163,7 @@ if fasta is not None:
             for cat in included_cats:
                 label+="_"+cat
                 
-            ("---")
-    
+
             ("""
             ### Download output FASTA
             """)
