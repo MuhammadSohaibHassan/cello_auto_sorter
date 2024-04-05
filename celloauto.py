@@ -32,9 +32,12 @@ cus = """
 
 .subtitle{
     color:#71e388;
-    display:flex;
+
     justify-content:center;
     font-size: 1.5em;
+    position: fixed;
+    bottom: 0;
+    right: 3em;
 }
 
 </style>
