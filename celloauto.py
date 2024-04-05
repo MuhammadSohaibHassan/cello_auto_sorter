@@ -100,7 +100,7 @@ if fasta is not None and cello is not None:
             for i in range(0,j+1):
                 if cat in clines[(13+(gap*i))-1]:
                     count+=1
-                    seqid=">"+clines[(gap*i)][7:]
+                    seqid=">"+clines[(gap*i)+1][7:]
                     idx=flines.index(seqid)
                     idx+=1
                     seq=""
