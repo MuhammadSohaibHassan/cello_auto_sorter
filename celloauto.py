@@ -161,7 +161,7 @@ if fasta is not None:
             """)
             
             for cat_info_label in cats_info_labels:
-                st.col1.text(cat_info_label)
+                st.text(cat_info_label)
     
             label = "proteins"
             for cat in included_cats:
