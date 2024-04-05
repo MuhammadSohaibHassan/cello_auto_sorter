@@ -101,15 +101,17 @@ if fasta is not None:
                 break
                 
         if isBactGramPositive:
+            st.success("Bacterial Specie detected to be  Gram Positive")
             cats = cats_pos
             gap = 18
         else:
+            st.success("Bacterial Specie detected to be  Gram Positive")
             cats = cats_neg
             gap = 19
             
         st.sidebar.divider()
     
-        included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output FASTA file',cats,cats)
+        included_cats = st.sidebar.multiselect('Drop all the Protein Catagories You don\'t want to include in output FASTA file',cats,cats)
         
         cats_info_labels = []
     
