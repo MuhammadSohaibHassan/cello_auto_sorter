@@ -31,13 +31,11 @@ cus = """
 }
 
 .subtitle{
-    color:#71e388;
-
-    justify-content:center;
-    font-size: 1.5em;
     position: fixed;
     bottom: 0;
-    right: 3em;
+    right: 0em;
+    color:#71e388;
+    font-size: 1.5em;
 }
 
 </style>
