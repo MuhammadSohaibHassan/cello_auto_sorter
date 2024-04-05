@@ -23,14 +23,14 @@ cus = """
     color:#71e388;
     display:flex;
     justify-content:center;
-    font-size: 2.5 em;
+    font-size: 2.5em;
 }
 
 .subtitle{
     color:#71e388;
     display:flex;
     justify-content:center;
-    font-size: 1.5 em;
+    font-size: 1.5em;
 }
 
 </style>
