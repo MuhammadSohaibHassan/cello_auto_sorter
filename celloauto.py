@@ -33,6 +33,7 @@ st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
 
 fasta = st.sidebar.file_uploader("Upload fasta", type=["txt"])
+st.sidebar.write("Please save your .FASTA file as .txt file to upload")
 if fasta is not None:
     st.sidebar.success("FASTA file uploaded")
     flines = fasta.readlines()
