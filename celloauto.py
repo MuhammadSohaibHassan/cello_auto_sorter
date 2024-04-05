@@ -42,7 +42,7 @@ cus = """
 
 <span class="title">subCELlular LOcalization predictor</span>
 <span class="subtitle">Results Sorter</span>
-<span class="footer">By Muhammad Sohaib Hassan</span>
+<span class="footer">By Muhammad Sohaib Hassan (SBB PU Lhr)</span>
 
 """
 
