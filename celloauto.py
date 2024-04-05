@@ -8,7 +8,7 @@ cus = """
     }
     
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.st-emotion-cache-uf99v8.ea3mdgi8{
-    background:darkseagreen;
+    background:green;
 }
 
 </style>
