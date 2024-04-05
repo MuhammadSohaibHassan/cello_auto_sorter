@@ -123,14 +123,19 @@ if fasta is not None and cello is not None:
             labels.append(cat)
             sizes.append(count)
 
-        for cat_info_label in cats_info_labels:
-            st.success(cat_info_label)
-
-        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-        st.pyplot()
+        col1,col2 = st.columns(2)
         
-        label = "proteins"
-        for cat in included_cats:
-            label+="_"+cat
+        with col1:
 
-        st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
+            for cat_info_label in cats_info_labels:
+                st.success(cat_info_label)
+    
+            label = "proteins"
+            for cat in included_cats:
+                label+="_"+cat
+
+            st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
+
+        with col2:
+            plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+            st.pyplot()
