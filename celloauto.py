@@ -1,4 +1,5 @@
 import streamlit as st
+import matplotlib.pyplot as plt
 
 cus = """
 <style>
@@ -84,6 +85,8 @@ if fasta is not None and cello is not None:
     included_cats = st.multiselect('Drop all the Protein Cataories You don\'t want to include in output',cats,cats)
     
     cats_info_labels = []
+    labels=[]
+    sizes=[]
 
     if st.button("Generate output file"):
 
@@ -119,9 +122,14 @@ if fasta is not None and cello is not None:
             output_fasta+=fileo
             cat_info_label = str(cat)+" --> "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
+            labels.append(cat)
+            sizes.append(count)
 
         for cat_info_label in cats_info_labels:
             st.success(cat_info_label)
+
+        plt.pie(sizes, labels=labels, autopct='%1.1f%%')
+        st.pyplot()
         
         label = "proteins"
         for cat in included_cats:
