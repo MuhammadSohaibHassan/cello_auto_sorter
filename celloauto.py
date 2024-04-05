@@ -48,7 +48,7 @@ cus = """
 
 st.markdown(cus,unsafe_allow_html=True)
 
-st.write("""
+st.sidebar.write("""
             ### Upload FASTA file
 """)
 
@@ -71,7 +71,7 @@ if fasta is not None:
 
     st.success(f"{totalProteins} protein sequences have been imported successfully")
 
-    st.write("""
+    st.sidebar.write("""
             ### Upload CELLO Result file
     """)
 
