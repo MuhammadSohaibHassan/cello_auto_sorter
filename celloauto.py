@@ -116,11 +116,14 @@ if fasta is not None and cello is not None:
             cat_info_label = str(cat)+" : "+str(count)+" ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
 
+        st.success("FASTA file generated Successfully")
+
+        ("---")
+        
         ("""
         ### Catagories Breakdown
         """)
         
-        ("---")
         for cat_info_label in cats_info_labels:
             st.text(cat_info_label)
 
@@ -129,8 +132,6 @@ if fasta is not None and cello is not None:
             label+="_"+cat
             
         ("---")
-            
-        st.success("FASTA file generated Successfully")
 
         ("""
         ### Download output FASTA
