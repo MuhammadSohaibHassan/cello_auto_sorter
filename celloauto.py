@@ -1,6 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 cus = """
 <style>
@@ -53,6 +51,7 @@ if fasta is not None:
     * Now creat a .txt file , paste this copied text and save it with name of your choice
     * Now this is the file to upload here
     """)
+    
     cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
     if cello is not None:
         st.sidebar.success("CEELO Result file uploaded ")
@@ -94,8 +93,6 @@ if fasta is not None and cello is not None:
     included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output',cats,cats)
     
     cats_info_labels = []
-    labels=[]
-    sizes=[]
 
     if st.sidebar.button("Generate output file"):
         
@@ -129,24 +126,13 @@ if fasta is not None and cello is not None:
             output_fasta+=fileo
             cat_info_label = str(cat)+" : "+str(count)+" ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
-            labels.append(cat)
-            sizes.append(count)
 
-        col1,col2 = st.columns(2)
-        
-        with col1:
+        for cat_info_label in cats_info_labels:
+            st.text(cat_info_label)
 
-            for cat_info_label in cats_info_labels:
-                st.text(cat_info_label)
-    
-            label = "proteins"
-            for cat in included_cats:
-                label+="_"+cat
+        label = "proteins"
+        for cat in included_cats:
+            label+="_"+cat
 
-            st.success("FASTA file generated Successfully")
-            st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
-
-        with col2:
-            
-            plt.pie(sizes, labels=labels, autopct='%1.1f%%')
-            st.pyplot()
+        st.success("FASTA file generated Successfully")
+        st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
