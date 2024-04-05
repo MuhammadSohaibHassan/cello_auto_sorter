@@ -53,7 +53,7 @@ st.sidebar.title("CELLO Result Sorter")
 st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
 fasta = st.sidebar.file_uploader("Upload fasta (.txt format) ", type=["txt"])
 if fasta is not None:
-    st.sidebar.success("FASTA file uploaded")
+    st.success("FASTA file uploaded")
     flines = fasta.readlines()
     flines_temp = []
     for line in flines:
@@ -83,7 +83,7 @@ if fasta is not None:
     
     cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
     if cello is not None:
-        st.sidebar.success("CEELO Result file uploaded ")
+        st.success("CEELO Result file uploaded ")
         clines = cello.readlines()
         clines_temp = []
         for line in clines:
