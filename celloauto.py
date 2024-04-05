@@ -146,7 +146,7 @@ if fasta is not None and cello is not None:
             for cat in included_cats:
                 label+="_"+cat
 
-            st.success("FASTA file generated Successfully , click to download")
+            st.success("FASTA file generated Successfully")
             st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
 
         with col2:
