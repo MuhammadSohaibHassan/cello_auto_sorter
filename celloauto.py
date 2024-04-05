@@ -40,16 +40,22 @@ if fasta is not None:
         flines_temp.append(line)
     flines = flines_temp
 
-if fasta is not None:
+    i = 0
+    for line in flines:
+        if ">" in line:
+            i+=1
+    totalProteins = i
+
+    st.success(f"{totalProteins} protein sequences have been imported successfully")
 
     st.sidebar.warning("""
     ### Important!!!
     * Open your FASTA file in a text editor and copy all the sequence text by pressing **Ctrl+A**
-    * Follow the link **[CELLO v.2.5]**(http://cello.life.nctu.edu.tw/)
+    * Follow the link **[CELLO v.2.5](http://cello.life.nctu.edu.tw/)**
     * Select your Organism type (Gram Positive , Gram Negative)
     * Paste the copied FASTA sequence text in the text field (make sure to delete dummy seq already present there)
     * Hit **Submit**
-    * On next page Titling **"CELLO RESULTS"** Press **Ctrl+A**
+    * On next page Titling **"CELLO RESULTS"** , Copy all the text displayed by pressing **Ctrl+A**
     * Now creat a .txt file , paste this copied text and save it with name of your choice
     * Now this is the file to upload here
     """)
@@ -65,14 +71,6 @@ if fasta is not None:
         clines = clines_temp
 
 if fasta is not None and cello is not None:
-
-    i = 0
-    for line in flines:
-        if ">" in line:
-            i+=1
-    totalProteins = i
-
-    st.success(f"{totalProteins} protein sequences have been imported successfully")
 
     st.sidebar.divider()
 
