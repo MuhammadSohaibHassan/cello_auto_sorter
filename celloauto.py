@@ -48,10 +48,12 @@ cus = """
 
 st.markdown(cus,unsafe_allow_html=True)
 
-st.sidebar.title("CELLO Result Sorter")
+st.write("""
+            ### Upload FASTA file
+""")
 
 st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
-fasta = st.sidebar.file_uploader("Upload fasta (.txt format) ", type=["txt"])
+fasta = st.sidebar.file_uploader("Upload FASTA (.txt format) ", type=["txt"])
 if fasta is not None:
     st.success("FASTA file uploaded")
     flines = fasta.readlines()
@@ -69,6 +71,10 @@ if fasta is not None:
 
     st.success(f"{totalProteins} protein sequences have been imported successfully")
 
+    st.write("""
+            ### Upload CELLO Result file
+    """)
+
     st.sidebar.warning("""
     ### Important!!!
     * Open your FASTA file in a text editor and copy all the sequence text by pressing **Ctrl+A**
@@ -81,9 +87,9 @@ if fasta is not None:
     * Now this is the file to upload here
     """)
     
-    cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
+    cello = st.sidebar.file_uploader("Upload CELLO", type=["txt"])
     if cello is not None:
-        st.success("CEELO Result file uploaded ")
+        st.success("CELLO Result file uploaded ")
         clines = cello.readlines()
         clines_temp = []
         for line in clines:
