@@ -7,7 +7,7 @@ cus = """
     visibility:hidden;
     }
     
-#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.st-emotion-cache-uf99v8.ea3mdgi8{
+#root > div:nth-child(1) > div{
     background:green;
 }
 
