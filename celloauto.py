@@ -135,7 +135,7 @@ if fasta is not None and cello is not None:
 
         st.write("""
         ## Catagories Breakdown
-        """
+        """)
         for cat_info_label in cats_info_labels:
             st.text(cat_info_label)
 
@@ -145,6 +145,6 @@ if fasta is not None and cello is not None:
 
         st.write("""
         ## Download output FASTA
-        """
+        """)
                  
         st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
