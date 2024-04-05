@@ -25,7 +25,7 @@ cus = """
 .subtitle{
     position: fixed;
     bottom: 0em;
-    right: 7em;
+    right: 12em;
     color:#71e388;
     font-size: 1.0em;
 }
