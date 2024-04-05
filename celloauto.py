@@ -10,18 +10,9 @@ cus = """
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1ec6rqw.eczjsme11 > div.st-emotion-cache-6qob1r.eczjsme3 > div.st-emotion-cache-1b9x38r.eczjsme2 > button{
     visibility:hidden;
 }
-
-#root > div:nth-child(1) > div > div > button{
-    visibility:hidden;
-}
     
-
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1ec6rqw.eczjsme11 > div.st-emotion-cache-6qob1r.eczjsme3{
     background:#0e2e16;
-}
-
-.styles_terminalButton__JBj5T{
-    visibility:hidden;
 }
 
 .title{
@@ -33,7 +24,7 @@ cus = """
 
 .subtitle{
     position: fixed;
-    bottom: 2em;
+    bottom: 0em;
     right: 5em;
     color:#71e388;
     font-size: 1.5em;
