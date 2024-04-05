@@ -3,7 +3,7 @@ import streamlit as st
 cus = """
 <style>
 
-body {
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.st-emotion-cache-uf99v8.ea3mdgi8 {
   background-image: url("https://github.com/MuhammadSohaibHassan/cello_auto_sorter/blob/main/University_of_the_Punjab_logo-removebg-preview.png")
 }
 
@@ -16,7 +16,7 @@ body {
     }
     
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1ec6rqw.eczjsme11 > div.st-emotion-cache-6qob1r.eczjsme3 > div.st-emotion-cache-16txtl3.eczjsme4{
-    background:blue;
+    background:lightgreen;
 }
 
 </style>
