@@ -91,86 +91,82 @@ if fasta is not None:
             clines_temp.append(line)
         clines = clines_temp
 
-if fasta is not None and cello is not None:
+        cats_pos = ["Extracellular","Cytoplasmic","Membrane","CellWall"]
+        cats_neg = ["Extracellular","Cytoplasmic","Periplasmic","OuterMembrane",,"InnerMembrane"]
 
-    st.sidebar.divider()
-
-    bact_type = st.sidebar.radio(
-    "Organism",
-    ["Gram Positive", "Gram Negative"]
-    )
-
-    st.sidebar.divider()
-
-    cats_pos = ["Extracellular","Cytoplasmic","Membrane","CellWall"]
-    cats_neg = ["Cytoplasmic","Periplasmic","OuterMembrane","Extracellular","InnerMembrane"]
-
-    if bact_type == "Gram Positive":
-        cats = cats_pos
-        gap = 18
-
-    else:
-        cats = cats_neg
-        gap = 19
-
-    included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output FASTA file',cats,cats)
+        isBactGramPositive = False
+        for line in clines:
+            if "CellWall" in line:
+                isBactGramPositive = True
+                break
+                
+        if isBactGramPositive:
+            cats = cats_pos
+            gap = 18
+        else:
+            cats = cats_neg
+            gap = 19
+            
+        st.sidebar.divider()
     
-    cats_info_labels = []
-
-    if st.sidebar.button("Generate FASTA file for seelcted catagories"):
-
-        st.write("Crawling to sort proteins into catagories w.r.t their predicted Sub Cellular Location ...")
+        included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output FASTA file',cats,cats)
         
-        output_fasta=""
-
-        for i in range(len(included_cats)):
-            fileo=""
-            cat = included_cats[i]
-
-            j=(len(clines)-13)//gap
-            count=0
-            for i in range(0,j+1):
-                if cat in clines[(13+(gap*i))-1]:
-                    count+=1
-                    seqid=">"+clines[(gap*i)+1][7:]
-                    idx=flines.index(seqid)
-                    idx+=1
-                    seq=""
-                    while ">" not in flines[idx]:
-                        seq+=flines[idx].strip()
-                        if idx<len(flines)-1:
-                            idx+=1
-                        else:
-                            break
-                    fileo+=seqid
-                    for i in range(0,len(seq),60):
-                        seqline = seq[i:i+60]+"\n"
-                        fileo+=seqline
-                    fileo+="\n"
+        cats_info_labels = []
+    
+        if st.sidebar.button("Generate FASTA file for seelcted catagories"):
+    
+            st.write("Crawling to sort proteins into catagories w.r.t their predicted Sub Cellular Location ...")
             
-            output_fasta+=fileo
-            cat_info_label = str(cat)+" : "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
-            cats_info_labels.append(cat_info_label)
-
-        st.success("FASTA file generated Successfully")
-
-        ("---")
-        
-        ("""
-        ### Catagories Breakdown
-        """)
-        
-        for cat_info_label in cats_info_labels:
-            st.text(cat_info_label)
-
-        label = "proteins"
-        for cat in included_cats:
-            label+="_"+cat
+            output_fasta=""
+    
+            for i in range(len(included_cats)):
+                fileo=""
+                cat = included_cats[i]
+    
+                j=(len(clines)-13)//gap
+                count=0
+                for i in range(0,j+1):
+                    if cat in clines[(13+(gap*i))-1]:
+                        count+=1
+                        seqid=">"+clines[(gap*i)+1][7:]
+                        idx=flines.index(seqid)
+                        idx+=1
+                        seq=""
+                        while ">" not in flines[idx]:
+                            seq+=flines[idx].strip()
+                            if idx<len(flines)-1:
+                                idx+=1
+                            else:
+                                break
+                        fileo+=seqid
+                        for i in range(0,len(seq),60):
+                            seqline = seq[i:i+60]+"\n"
+                            fileo+=seqline
+                        fileo+="\n"
+                
+                output_fasta+=fileo
+                cat_info_label = str(cat)+" : "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
+                cats_info_labels.append(cat_info_label)
+    
+            st.success("FASTA file generated Successfully")
+    
+            ("---")
             
-        ("---")
-
-        ("""
-        ### Download output FASTA
-        """)
-                 
-        st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
+            ("""
+            ### Catagories Breakdown
+            """)
+            
+            for cat_info_label in cats_info_labels:
+                st.text(cat_info_label)
+    
+            label = "proteins"
+            for cat in included_cats:
+                label+="_"+cat
+                
+            ("---")
+    
+            ("""
+            ### Download output FASTA
+            """)
+                     
+            st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
