@@ -72,7 +72,7 @@ if fasta is not None and cello is not None:
             i+=1
     totalProteins = i
 
-    st.sidebar.success(f"{totalProteins} protein sequences have been imported successfully")
+    st.success(f"{totalProteins} protein sequences have been imported successfully")
 
     st.sidebar.divider()
 
@@ -80,6 +80,8 @@ if fasta is not None and cello is not None:
     "Organism",
     ["Gram Positive", "Gram Negative"]
     )
+
+    st.sidebar.divider()
 
     cats_pos = ["Extracellular","Cytoplasmic","Membrane","CellWall"]
     cats_neg = ["Cytoplasmic","Periplasmic","OuterMembrane","Extracellular","InnerMembrane"]
@@ -92,7 +94,7 @@ if fasta is not None and cello is not None:
         cats = cats_neg
         gap = 19
 
-    included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output',cats,cats)
+    included_cats = st.sidebar.multiselect('Drop all the Protein Cataories You don\'t want to include in output FASTA file',cats,cats)
     
     cats_info_labels = []
 
@@ -129,6 +131,11 @@ if fasta is not None and cello is not None:
             cat_info_label = str(cat)+" : "+str(count)+" ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
 
+        st.success("FASTA file generated Successfully")
+
+        st.write("""
+        ## Catagories Breakdown
+        """
         for cat_info_label in cats_info_labels:
             st.text(cat_info_label)
 
@@ -136,5 +143,8 @@ if fasta is not None and cello is not None:
         for cat in included_cats:
             label+="_"+cat
 
-        st.success("FASTA file generated Successfully")
+        st.write("""
+        ## Download output FASTA
+        """
+                 
         st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
