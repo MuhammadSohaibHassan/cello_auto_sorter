@@ -68,7 +68,7 @@ if fasta is not None and cello is not None:
 
     st.sidebar.divider()
 
-    bact_type = stst.sidebar.radio(
+    bact_type = st.sidebar.radio(
     "Organism",
     ["Gram Positive", "Gram Negative"]
     )
