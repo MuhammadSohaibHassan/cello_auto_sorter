@@ -20,7 +20,9 @@ cus = """
 }
 
 .title{
-    color:#0e2e16
+    color:#71e388
+    display:flex
+    size:20px
 }
 
 </style>
