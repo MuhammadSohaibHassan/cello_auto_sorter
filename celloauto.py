@@ -35,7 +35,7 @@ cus = """
     bottom: 30px;
     right: 100px;
     color:#71e388;
-    font-size: 1.5em;
+    font-size: 0.5em;
 }
 
 </style>
