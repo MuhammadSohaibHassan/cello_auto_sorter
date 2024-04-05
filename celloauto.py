@@ -98,9 +98,7 @@ if fasta is not None and cello is not None:
     sizes=[]
 
     if st.sidebar.button("Generate output file"):
-
-        st.sidebar.info("Crwaling file for selected protein catagories...")
-
+        
         output_fasta=""
 
         for i in range(len(included_cats)):
