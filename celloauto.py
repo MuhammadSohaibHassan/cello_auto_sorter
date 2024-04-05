@@ -43,9 +43,11 @@ if fasta is not None:
 if fasta is not None:
 
     st.sidebar.warning("""
+    ### Important!!!
     * Open your FASTA file in a text editor and copy all the sequence text by pressing **Ctrl+A**
+    * Follow the link **[CELLO v.2.5]**(http://cello.life.nctu.edu.tw/)
     * Select your Organism type (Gram Positive , Gram Negative)
-    * Follow the link [CELLO v.2.5](http://cello.life.nctu.edu.tw/) and Paste the copied sequence text in the text field (make sure to delete dummy seq already present there)
+    * Paste the copied FASTA sequence text in the text field (make sure to delete dummy seq already present there)
     * Hit **Submit**
     * On next page Titling **"CELLO RESULTS"** Press **Ctrl+A**
     * Now creat a .txt file , paste this copied text and save it with name of your choice
