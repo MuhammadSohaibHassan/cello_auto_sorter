@@ -129,7 +129,7 @@ if fasta is not None and cello is not None:
                     fileo+="\n"
             
             output_fasta+=fileo
-            cat_info_label = str(cat)+" --> "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
+            cat_info_label = str(cat)+" : "+str(count)+" ("+str(round(count/totalProteins*100,3))+" %)"
             cats_info_labels.append(cat_info_label)
             labels.append(cat)
             sizes.append(count)
