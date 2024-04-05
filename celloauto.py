@@ -3,6 +3,10 @@ import streamlit as st
 cus = """
 <style>
 
+body {
+  background-image: url("https://github.com/MuhammadSohaibHassan/cello_auto_sorter/blob/main/University_of_the_Punjab_logo-removebg-preview.png")
+}
+
 #root > div:nth-child(1) > div.withScreencast > div > div > header{
     visibility:hidden;
     }
