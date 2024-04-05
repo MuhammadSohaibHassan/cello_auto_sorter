@@ -43,15 +43,26 @@ if fasta is not None:
         flines_temp.append(line)
     flines = flines_temp
 
-cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
-if cello is not None:
-    st.sidebar.success("CEELO Result file uploaded ")
-    clines = cello.readlines()
-    clines_temp = []
-    for line in clines:
-        line = line.strip().decode('ascii')
-        clines_temp.append(line)
-    clines = clines_temp
+if fasta is not None:
+
+    st.sidebar.warning("""
+    * Open your FASTA file in a text editor and copy all the sequence text by pressing **Ctrl+A**
+    * Select your Organism type (Gram Positive , Gram Negative)
+    * Go to [CELLO v.2.5](http://cello.life.nctu.edu.tw/) and Paste the copied sequence text in the text field (make sure to delete dummy seq already present there)
+    * Hit **Submit**
+    * On next page Titling **"CELLO RESULTS"** Press **Ctrl+A**
+    * Now creat a .txt file , paste this copied text and save it with name of your choice
+    * Now this is the file to upload here
+    """)
+    cello = st.sidebar.file_uploader("Upload cello", type=["txt"])
+    if cello is not None:
+        st.sidebar.success("CEELO Result file uploaded ")
+        clines = cello.readlines()
+        clines_temp = []
+        for line in clines:
+            line = line.strip().decode('ascii')
+            clines_temp.append(line)
+        clines = clines_temp
 
 if fasta is not None and cello is not None:
 
