@@ -41,7 +41,7 @@ cus = """
 </style>
 
 <span class="title">subCELlular LOcalization predictor</span>
-<span class="subtitle">Results Sorter</span>
+<span class="subtitle">By Muhammad Sohaib Hassan</span>
 
 """
 st.markdown(cus,unsafe_allow_html=True)
