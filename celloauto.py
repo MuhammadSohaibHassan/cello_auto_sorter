@@ -92,7 +92,7 @@ if fasta is not None:
         clines = clines_temp
 
         cats_pos = ["Extracellular","Cytoplasmic","Membrane","CellWall"]
-        cats_neg = ["Extracellular","Cytoplasmic","Periplasmic","OuterMembrane",,"InnerMembrane"]
+        cats_neg = ["Extracellular","Cytoplasmic","Periplasmic","OuterMembrane","InnerMembrane"]
 
         isBactGramPositive = False
         for line in clines:
