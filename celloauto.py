@@ -95,10 +95,10 @@ if fasta is not None and cello is not None:
             fileo=""
             cat = included_cats[i]
 
-            j=(len(clines)-12)//gap
+            j=(len(clines)-13)//gap
             count=0
             for i in range(0,j+1):
-                if cat in clines[(12+(gap*i))-1]:
+                if cat in clines[(13+(gap*i))-1]:
                     count+=1
                     seqid=">"+clines[(gap*i)][7:]
                     idx=flines.index(seqid)
