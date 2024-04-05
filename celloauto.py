@@ -111,11 +111,11 @@ if fasta is not None:
             
         st.sidebar.divider()
     
-        included_cats = st.sidebar.multiselect('Drop all the Protein Catagories You don\'t want to include in output FASTA file',cats,cats)
+        included_cats = st.multiselect('Drop all the Protein Catagories You don\'t want to include in output FASTA file',cats,cats)
         
         cats_info_labels = []
     
-        if st.sidebar.button("Generate FASTA file for seelcted catagories"):
+        if st.button("Generate FASTA file for seelcted catagories"):
     
             st.write("Crawling to sort proteins into catagories w.r.t their predicted Sub Cellular Location ...")
             
