@@ -23,12 +23,20 @@ cus = """
     color:#71e388;
     display:flex;
     justify-content:center;
-    font-size: 2.5em;
+    font-size: 2.5 em;
+}
+
+.subtitle{
+    color:#71e388;
+    display:flex;
+    justify-content:center;
+    font-size: 1.5 em;
 }
 
 </style>
 
 <span class="title">subCELlular LOcalization predictor</span>
+<span class="subtitle">subCELlular LOcalization predictor</span>
 
 """
 st.markdown(cus,unsafe_allow_html=True)
