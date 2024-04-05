@@ -11,6 +11,14 @@ cus = """
     background:green;
 }
 
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1ec6rqw.eczjsme11 > div.st-emotion-cache-6qob1r.eczjsme3{
+    background:green;
+}
+
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1ec6rqw.eczjsme11 > div.st-emotion-cache-6qob1r.eczjsme3 > div.st-emotion-cache-1b9x38r.eczjsme2 > button{
+    visibility:hidden;
+}
+
 </style>
 """
 st.markdown(cus,unsafe_allow_html=True)
