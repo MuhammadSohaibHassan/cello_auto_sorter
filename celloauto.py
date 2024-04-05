@@ -150,9 +150,7 @@ if fasta is not None:
 
             st.success("FASTA file generated Successfully")
     
-            ("---")
-            
-            ("""
+            st.write("""
             ### Catagories Breakdown
             """)
             
@@ -164,7 +162,7 @@ if fasta is not None:
                 label+="_"+cat
                 
 
-            ("""
+            st.write("""
             ### Download output FASTA
             """)
                      
