@@ -20,7 +20,7 @@ cus = """
 }
 
 </style>
-<span>subCELlular LOcalization predictor<\span>
+<span>subCELlular LOcalization predictor</span>
 """
 st.markdown(cus,unsafe_allow_html=True)
 st.sidebar.title("CELLO Result Sorter")
