@@ -23,6 +23,10 @@ cus = """
     background:#0e2e16;
 }
 
+.styles_terminalButton__JBj5T{
+    visibility:hidden;
+}
+
 .title{
     color:#71e388;
     display:flex;
