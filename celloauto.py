@@ -22,6 +22,7 @@ cus = """
 .title{
     color:#71e388;
     display:flex;
+    justify-content:center;
     font-size: 2.5em;
 }
 
