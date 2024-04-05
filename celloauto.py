@@ -96,7 +96,7 @@ if fasta is not None and cello is not None:
     
     cats_info_labels = []
 
-    if st.sidebar.button("Generate output file"):
+    if st.sidebar.button("Generate FASTA file for seelcted catagories"):
         
         output_fasta=""
 
