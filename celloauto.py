@@ -16,6 +16,10 @@ cus = """
     background:#0e2e16;
 }
 
+footer{
+    visibility: hidden;
+}
+
 .title{
     color:#71e388;
     display:flex;
