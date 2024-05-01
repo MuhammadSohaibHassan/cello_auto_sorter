@@ -149,7 +149,9 @@ if fasta is not None:
                             else:
                                 break
                         fileo+=seqid+"\n"
-                        fileo+=seq+"\n"
+                        for i in range(0,len(seq),60):
+                            seqline = seq[i:i+60]+"\n"
+                            fileo+=seqline
                         fileo+="\n"
                 
                 output_fasta+=fileo
