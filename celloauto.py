@@ -149,7 +149,7 @@ if fasta is not None:
                             else:
                                 break
                         fileo+=seqid+"\n"
-                        fileo+=seqline
+                        fileo+=seq
                         fileo+="\n"
                 
                 output_fasta+=fileo
