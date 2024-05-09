@@ -1,4 +1,5 @@
 import streamlit as st
+import fastaparser
 
 cus = """
 
@@ -56,12 +57,18 @@ st.sidebar.write("""
             ### Upload FASTA file
 """)
 
-st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
-fasta = st.sidebar.file_uploader("Upload FASTA (.txt format) ", type=["txt"])
+fasta = st.sidebar.file_uploader("Upload FASTA", type=["fasta"])
 if fasta is not None:
     st.success("FASTA file uploaded")
-    flines = fasta.readlines()
-    flines_temp = []
+    reader = fastaparser.Reader(fasta, parse_method='quick')
+    flines = []
+    for sequence in reader:
+    	header = sequence.header
+    	flines.append(header)
+    	seq = sequence.sequence_as_string()
+    	for i in range(0,len(seq),60):
+            flines.append(seq[i:i+60])
+    flines_temp=[]
     for line in flines:
         line = line.strip().decode('ascii')
         flines_temp.append(line)
@@ -90,7 +97,7 @@ if fasta is not None:
     * Now creat a .txt file , paste this copied text and save it with name of your choice
     * Now this is the file to upload here
     """)
-    
+
     cello = st.sidebar.file_uploader("Upload CELLO", type=["txt"])
     if cello is not None:
         st.success("CELLO Result file uploaded ")
@@ -109,7 +116,7 @@ if fasta is not None:
             if "CellWall" in line:
                 isBactGramPositive = True
                 break
-                
+
         if isBactGramPositive:
             st.success("Bacterial Specie detected to be Gram Positive")
             cats = cats_pos
@@ -118,21 +125,21 @@ if fasta is not None:
             st.success("Bacterial Specie detected to be Gram Negative")
             cats = cats_neg
             gap = 19
-    
+
         included_cats = st.multiselect('Drop all the Protein Catagories You don\'t want to include in output FASTA file',cats,cats)
-        
+
         cats_info_labels = []
-    
+
         if st.button("Generate FASTA file for seelcted catagories"):
-    
+
             st.write("Crawling to sort proteins into catagories w.r.t their predicted Sub Cellular Location ...")
-            
+
             output_fasta=""
-    
+
             for i in range(len(included_cats)):
                 fileo=""
                 cat = included_cats[i]
-    
+
                 j=(len(clines)-13)//gap
                 count=0
                 for i in range(0,j+1):
@@ -153,27 +160,27 @@ if fasta is not None:
                             seqline = seq[i:i+60]+"\n"
                             fileo+=seqline
                         fileo+="\n"
-                
+
                 output_fasta+=fileo
                 cat_info_label = str(cat)+" : "+str(count)+" proteins ("+str(round(count/totalProteins*100,3))+" %)"
                 cats_info_labels.append(cat_info_label)
 
             st.success("FASTA file generated Successfully")
-    
+
             st.write("""
             ### Catagories Breakdown
             """)
-            
+
             for cat_info_label in cats_info_labels:
                 st.text(cat_info_label)
-    
+
             label = "proteins"
             for cat in included_cats:
                 label+="_"+cat
-                
+
 
             st.write("""
             ### Download output FASTA
             """)
-                     
+
             st.download_button(label=label+".fasta",data=output_fasta,file_name=label+".fasta")
