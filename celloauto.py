@@ -1,5 +1,4 @@
 import streamlit as st
-import fastaparser
 
 cus = """
 
@@ -57,18 +56,12 @@ st.sidebar.write("""
             ### Upload FASTA file
 """)
 
-fasta = st.sidebar.file_uploader("Upload FASTA", type=["fasta"])
+st.sidebar.warning("Save your **.FASTA file** as **.txt** file to upload")
+fasta = st.sidebar.file_uploader("Upload FASTA (.txt format) ", type=["txt"])
 if fasta is not None:
     st.success("FASTA file uploaded")
-    reader = fastaparser.Reader(fasta, parse_method='quick')
-    flines = []
-    for sequence in reader:
-    	header = sequence.header
-    	flines.append(header)
-    	seq = sequence.sequence_as_string()
-    	for i in range(0,len(seq),60):
-            flines.append(seq[i:i+60])
-    flines_temp=[]
+    flines = fasta.readlines()
+    flines_temp = []
     for line in flines:
         line = line.strip().decode('ascii')
         flines_temp.append(line)
