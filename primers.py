@@ -1,3 +1,4 @@
+import streamlit as st
 seq = input("enter your seq:").lower()
 lenrrs=int(input("length of restriction seq at 3':"))
 fprimers=[]
