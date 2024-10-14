@@ -46,7 +46,7 @@ footer{
 
 <span class="title">subCELlular LOcalization predictor</span>
 <span class="subtitle">Results Sorter</span>
-<span class="footer">Supervised by: Dr. Shahbaz Aslam (Associate Prof. SBB PU)<br>By Muhammad Sohaib Hassan (SBB PU Lhr)</span>
+<span class="footer">Supervised by: Dr. Hafiz Muzzammil Rehman (Associate Prof. SBB PU)<br>By Muhammad Sohaib Hassan (SBB PU Lhr)</span>
 
 """
 
